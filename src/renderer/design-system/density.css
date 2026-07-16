@@ -1,0 +1,111 @@
+/* Density — chrome sizing driven by --deadeye-* layout tokens */
+
+.activity-bar__item {
+  width: var(--deadeye-activity-item-size);
+  height: var(--deadeye-activity-item-size);
+}
+
+.activity-bar__item svg {
+  width: var(--deadeye-icon-size-md);
+  height: var(--deadeye-icon-size-md);
+}
+
+.breadcrumbs-host,
+.breadcrumbs-bar {
+  min-height: var(--deadeye-breadcrumb-height);
+}
+
+.breadcrumbs-bar {
+  padding: 0 var(--deadeye-panel-padding-x);
+}
+
+.tab-item {
+  gap: var(--deadeye-space-2);
+  padding: 0 var(--deadeye-space-3) 0 var(--deadeye-space-4);
+  font-size: var(--deadeye-text-base);
+}
+
+.tab-close-button {
+  width: 18px;
+  height: 18px;
+  font-size: var(--deadeye-text-sm);
+}
+
+.tab-new-button {
+  width: 28px;
+  min-width: 28px;
+  font-size: var(--deadeye-text-md);
+}
+
+.file-explorer-header {
+  padding: var(--deadeye-panel-padding-y) var(--deadeye-panel-padding-x);
+  gap: var(--deadeye-space-2);
+}
+
+.file-explorer-toolbar {
+  padding: 0 var(--deadeye-panel-padding-x) var(--deadeye-panel-padding-y);
+}
+
+.file-explorer-root-label {
+  padding: var(--deadeye-space-2) var(--deadeye-panel-padding-x) var(--deadeye-space-1);
+  font-size: var(--deadeye-text-sm);
+}
+
+.tree-label {
+  font-size: var(--deadeye-text-base);
+}
+
+.tree-item {
+  padding: var(--deadeye-space-1) var(--deadeye-panel-padding-x);
+  min-height: 22px;
+}
+
+.welcome-action-button {
+  min-width: 128px;
+  min-height: var(--deadeye-button-height);
+  padding: var(--deadeye-space-2) var(--deadeye-space-4);
+  font-size: var(--deadeye-text-base);
+}
+
+.welcome-brand__logo {
+  width: 72px;
+  height: 72px;
+}
+
+.welcome-brand__title {
+  font-size: var(--deadeye-text-xl);
+}
+
+.settings-drawer__header,
+.settings-drawer__footer {
+  padding: var(--deadeye-space-3) var(--deadeye-space-4);
+}
+
+.settings-drawer__body {
+  padding: var(--deadeye-space-3) var(--deadeye-space-4);
+}
+
+.settings-drawer__save,
+.settings-drawer__reset {
+  min-height: var(--deadeye-button-height);
+  padding: var(--deadeye-space-1) var(--deadeye-space-3);
+  font-size: var(--deadeye-text-base);
+}
+
+.deadeye-btn {
+  min-height: var(--deadeye-button-height);
+}
+
+html[data-density='comfortable'] .welcome-brand__logo {
+  width: 88px;
+  height: 88px;
+}
+
+html[data-density='comfortable'] .welcome-brand__title {
+  font-size: 28px;
+}
+
+html[data-density='comfortable'] .welcome-action-button {
+  min-width: 148px;
+  font-size: var(--deadeye-text-md);
+}

@@ -1,0 +1,71 @@
+{
+  "name": "deadeye-studio",
+  "version": "1.0.0",
+  "description": "Professional desktop code editor built with Electron and Monaco",
+  "author": "Deadeye Studio",
+  "license": "MIT",
+  "main": "dist-electron/main.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/safe-build.mjs",
+    "build:vite": "vite build",
+    "typecheck": "tsc --noEmit",
+    "start": "electron .",
+    "dist": "node scripts/safe-dist.mjs",
+    "dist:portable": "node scripts/safe-dist.mjs --win portable",
+    "dist:installer": "node scripts/safe-dist.mjs --win nsis"
+  },
+  "build": {
+    "appId": "com.deadeye.studio",
+    "productName": "Deadeye Studio",
+    "copyright": "Copyright © Deadeye Studio",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "files": [
+      "dist-electron/**/*",
+      "dist/renderer/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "artifactName": "Deadeye-Studio-${version}-Setup.${ext}",
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "Deadeye-Studio-${version}-Portable.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Deadeye Studio"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "electron": "^35.5.0",
+    "electron-builder": "^25.1.8",
+    "monaco-editor": "^0.52.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-electron": "^0.29.0",
+    "vite-plugin-electron-renderer": "^0.14.6"
+  }
+}

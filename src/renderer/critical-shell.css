@@ -1,0 +1,25 @@
+/* Critical dark shell — applies before bundled JS/CSS (prevents white flash). */
+html {
+  color-scheme: dark;
+  background-color: #080808;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: #080808;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  background-color: #080808;
+}

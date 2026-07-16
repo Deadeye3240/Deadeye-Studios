@@ -1,0 +1,82 @@
+:root {
+  /*
+   * Default color tokens (Deadeye Dark).
+   * Runtime theme switching overrides these via ThemeApplier.
+   */
+  --deadeye-accent: #ff3b5c;
+  --deadeye-accent-muted: #ff3b5c66;
+  --deadeye-accent-subtle: #ff3b5c22;
+  --deadeye-accent-ghost: #ff3b5c12;
+  --deadeye-danger: #ff3b5c;
+  --deadeye-warning: #ffb347;
+  --deadeye-success: #7fdbca;
+
+  /* Surfaces */
+  --deadeye-bg-base: #080808;
+  --deadeye-bg-surface: #0a0a0a;
+  --deadeye-bg-elevated: #101010;
+  --deadeye-bg-panel: #121212;
+  --deadeye-bg-hover: #161616;
+  --deadeye-bg-active: #1a1a1a;
+  --deadeye-bg-input: #0e0e0e;
+
+  /* Text */
+  --deadeye-text-primary: #f0f0f0;
+  --deadeye-text-secondary: #c8c8c8;
+  --deadeye-text-muted: #8a9098;
+  --deadeye-text-disabled: #5a5a5a;
+
+  /* Borders */
+  --deadeye-border-subtle: #1a1a1a;
+  --deadeye-border-default: #1e1e1e;
+  --deadeye-border-strong: #2a2a2a;
+  --deadeye-border-focus: var(--deadeye-accent-muted);
+
+  /* Typography */
+  --deadeye-font-ui: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --deadeye-font-mono: 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+  --deadeye-text-xs: 10px;
+  --deadeye-text-sm: 11px;
+  --deadeye-text-base: 12px;
+  --deadeye-text-md: 13px;
+  --deadeye-text-lg: 16px;
+  --deadeye-text-xl: 22px;
+
+  /* Spacing */
+  --deadeye-space-1: 4px;
+  --deadeye-space-2: 6px;
+  --deadeye-space-3: 8px;
+  --deadeye-space-4: 12px;
+  --deadeye-space-5: 16px;
+  --deadeye-space-6: 24px;
+
+  /* Radius */
+  --deadeye-radius-sm: 4px;
+  --deadeye-radius-md: 6px;
+  --deadeye-radius-lg: 10px;
+
+  /* Shadows */
+  --deadeye-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --deadeye-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
+  --deadeye-shadow-glow: 0 0 24px rgba(255, 59, 92, 0.08);
+
+  /* Motion */
+  --deadeye-transition-fast: 120ms ease;
+  --deadeye-transition-normal: 180ms ease;
+  --deadeye-transition-slow: 260ms ease;
+
+  /* Layout — compact professional defaults (overridden by DensityApplier) */
+  --deadeye-activity-width: 40px;
+  --deadeye-sidebar-width: 240px;
+  --deadeye-header-height: 32px;
+  --deadeye-status-height: 22px;
+  --deadeye-tab-height: 30px;
+  --deadeye-activity-item-size: 32px;
+  --deadeye-breadcrumb-height: 24px;
+  --deadeye-panel-padding-x: 8px;
+  --deadeye-panel-padding-y: 6px;
+  --deadeye-button-height: 24px;
+  --deadeye-icon-size-sm: 18px;
+  --deadeye-icon-size-md: 20px;
+  --deadeye-ui-scale: 1;
+}

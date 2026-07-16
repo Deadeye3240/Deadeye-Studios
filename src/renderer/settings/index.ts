@@ -1,0 +1,6 @@
+export { SettingsPanel } from './settings-panel'
+export type { SettingsPanelCallbacks } from './settings-panel'
+export { SettingsClient, getSettingsClient } from './settings-client'
+export { SettingsApplier } from './settings-applier'
+export { applyApplicationTheme, getThemeApplier } from '../themes'
+export { applyDensityAppearance } from '../density'
