@@ -15,7 +15,9 @@
     "start": "electron .",
     "dist": "node scripts/safe-dist.mjs",
     "dist:portable": "node scripts/safe-dist.mjs --win portable",
-    "dist:installer": "node scripts/safe-dist.mjs --win nsis"
+    "dist:installer": "node scripts/safe-dist.mjs --win nsis",
+    "dist:linux": "node scripts/safe-dist.mjs --linux",
+    "dist:win": "node scripts/safe-dist.mjs --win"
   },
   "build": {
     "appId": "com.deadeye.studio",
@@ -56,6 +58,24 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "Deadeye Studio"
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": ["x64"]
+        },
+        {
+          "target": "deb",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.png",
+      "category": "Development",
+      "maintainer": "Deadeye Studio",
+      "artifactName": "Deadeye-Studio-${version}-${arch}.${ext}",
+      "synopsis": "Professional desktop code editor",
+      "description": "Deadeye Studio is a modern developer environment built for speed, productivity, and customization."
     }
   },
   "devDependencies": {

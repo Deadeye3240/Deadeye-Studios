@@ -1,0 +1,136 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+permissions:
+  contents: write
+
+env:
+  CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+
+jobs:
+  build-windows:
+    name: Windows (Setup + Portable)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build Windows installers
+        run: npm run dist:win
+
+      - name: Upload Windows artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-release
+          if-no-files-found: error
+          path: |
+            release/Deadeye-Studio-*-Setup.exe
+            release/Deadeye-Studio-*-Portable.exe
+
+  build-linux:
+    name: Linux (AppImage + deb)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build Linux packages
+        run: npm run dist:linux
+
+      - name: Upload Linux artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-release
+          if-no-files-found: error
+          path: |
+            release/Deadeye-Studio-*.AppImage
+            release/*.deb
+
+  publish:
+    name: Publish GitHub Release
+    needs: [build-windows, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Windows artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-release
+          path: dist-artifacts/windows
+
+      - name: Download Linux artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-release
+          path: dist-artifacts/linux
+
+      - name: Resolve release tag
+        id: tag
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "value=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.value }}
+          name: Deadeye Studio ${{ steps.tag.outputs.value }}
+          generate_release_notes: true
+          files: |
+            dist-artifacts/windows/*
+            dist-artifacts/linux/*
+          body: |
+            ## Deadeye Studio ${{ steps.tag.outputs.value }}
+
+            First public release of Deadeye Studio — a modern Electron + Monaco desktop IDE.
+
+            ### Windows
+            - **Setup** — `Deadeye-Studio-*-Setup.exe` (installer)
+            - **Portable** — `Deadeye-Studio-*-Portable.exe` (no install required)
+
+            ### Linux
+            - **AppImage** — `Deadeye-Studio-*.AppImage` (portable, chmod +x then run)
+            - **deb** — `*.deb` (Debian/Ubuntu package)
+
+            ### Notes
+            - Windows builds are unsigned; SmartScreen may warn on first launch.
+            - AppImage: `chmod +x Deadeye-Studio-*.AppImage && ./Deadeye-Studio-*.AppImage`
