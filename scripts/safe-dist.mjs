@@ -30,7 +30,11 @@ function buildDistEnv() {
   const env = {
     ...process.env,
     CSC_IDENTITY_AUTO_DISCOVERY: 'false',
-    ELECTRON_BUILDER_CACHE: SAFE_ELECTRON_BUILDER_CACHE,
+  }
+
+  if (process.platform === 'win32') {
+    fs.mkdirSync(SAFE_ELECTRON_BUILDER_CACHE, { recursive: true })
+    env.ELECTRON_BUILDER_CACHE = SAFE_ELECTRON_BUILDER_CACHE
   }
 
   if (HASH_PATH_ISSUE) {

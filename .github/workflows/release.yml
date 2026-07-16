@@ -38,7 +38,9 @@ jobs:
         run: npm run typecheck
 
       - name: Build Windows installers
-        run: npm run dist:win
+        run: |
+          npm run build
+          npx electron-builder --win
 
       - name: Upload Windows artifacts
         uses: actions/upload-artifact@v4
@@ -62,6 +64,11 @@ jobs:
           node-version: '22'
           cache: npm
 
+      - name: Install Linux packaging dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rpm fakeroot dpkg
+
       - name: Install dependencies
         run: npm ci
 
@@ -69,7 +76,9 @@ jobs:
         run: npm run typecheck
 
       - name: Build Linux packages
-        run: npm run dist:linux
+        run: |
+          npm run build
+          npx electron-builder --linux
 
       - name: Upload Linux artifacts
         uses: actions/upload-artifact@v4
