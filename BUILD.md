@@ -65,6 +65,10 @@ SQLite format 3...
 
 **Fix:** Build from `C:\dev\deadeye-studio` or let `scripts/safe-build.mjs` stage the project to `C:\deadeye-studio-build`.
 
+## README screenshots
+
+Product screenshots for the public README live in `docs/screenshots/` (v1.0.0 captures from the portable build). See `docs/screenshots/README.md` when refreshing them for a new release.
+
 ## Smoke test checklist
 
 - [ ] Launch `Deadeye-Studio-1.0.0-Portable.exe` or `npm start`

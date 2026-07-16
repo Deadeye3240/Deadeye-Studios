@@ -1,14 +1,18 @@
 # Screenshots for README
 
-Save PNG captures here for the public README. Recommended resolution: **1280×800** (matches default window size).
+Real captures from **Deadeye Studio v1.0.0** (production portable build). Resolution: **1280×800** (default window size).
 
-| Filename | What to capture |
-|----------|-----------------|
-| `welcome.png` | Welcome screen on first launch |
-| `editor.png` | Main editor with a code file open and syntax highlighting |
-| `explorer.png` | File explorer with a project folder expanded |
-| `terminal.png` | Integrated terminal panel visible |
-| `search.png` | Quick Open (`Ctrl+P`) or search UI |
-| `settings.png` | Settings panel |
+| Filename | Contents |
+|----------|----------|
+| `welcome.png` | Welcome screen with quick actions, getting started cards, and recent projects |
+| `editor.png` | Main editor with TypeScript open and syntax highlighting |
+| `explorer.png` | File explorer with the `deadeye-studio` project expanded |
+| `terminal.png` | Welcome screen with the integrated PowerShell terminal panel |
+| `search.png` | In-editor find (`Ctrl+F`) with match highlights |
+| `settings.png` | Settings panel (theme, font, editor, and workspace options) |
 
-Launch the packaged app from `release/Deadeye-Studio-1.0.0-Portable.exe` or run `npm start` after `npm run build`.
+## Updating for a new version
+
+1. Launch the packaged app (`release/Deadeye-Studio-*-Portable.exe` or `npm start` after `npm run build`).
+2. Capture each view at 1280×800 and overwrite the PNGs above.
+3. Update the version note in the root `README.md` Screenshots section if the UI changed.

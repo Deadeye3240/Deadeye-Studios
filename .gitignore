@@ -1,6 +1,9 @@
 node_modules/
 dist/
 dist-electron/
+release/
+build-out.txt
+gh-auth.log
 *.log
 .DS_Store
 Thumbs.db

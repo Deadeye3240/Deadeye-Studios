@@ -45,29 +45,32 @@ TypeScript and JavaScript include enhanced semantic highlighting via the Deadeye
 |----------|----------|
 | ![Explorer](docs/screenshots/explorer.png) | ![Terminal](docs/screenshots/terminal.png) |
 
-| Search | Settings |
-|--------|----------|
-| ![Search](docs/screenshots/search.png) | ![Settings](docs/screenshots/settings.png) |
+| Find in editor | Settings |
+|----------------|----------|
+| ![Find in editor](docs/screenshots/search.png) | ![Settings](docs/screenshots/settings.png) |
 
-> Screenshots in `docs/screenshots/` are illustrative mockups for the README. Replace them with real captures from the packaged app for the most accurate public presentation.
+Screenshots captured from **Deadeye Studio v1.0.0** (production build).
 
 ## Installation
 
-### Windows (recommended)
+### Download (recommended)
 
-Download the latest release artifacts from `release/` after building, or use the pre-built installers:
+Get the latest release from [GitHub Releases](https://github.com/Deadeye3240/Deadeye-Studios/releases/latest):
 
-| Artifact | Description |
-|----------|-------------|
-| `Deadeye-Studio-1.0.0-Setup.exe` | NSIS installer with Start Menu and desktop shortcuts |
-| `Deadeye-Studio-1.0.0-Portable.exe` | Portable executable — no installation required |
-| `release/win-unpacked/` | Unpacked application folder for development testing |
+| Platform | Artifact | Description |
+|----------|----------|-------------|
+| Windows | `Deadeye-Studio-1.0.0-Setup.exe` | NSIS installer with Start Menu and desktop shortcuts |
+| Windows | `Deadeye-Studio-1.0.0-Portable.exe` | Portable executable — no installation required |
+| Linux | `Deadeye-Studio-1.0.0-x86_64.AppImage` | AppImage — make executable and run (`chmod +x`) |
+| Linux | `Deadeye-Studio-1.0.0-amd64.deb` | Debian/Ubuntu package (`sudo dpkg -i …`) |
+
+Windows builds are unsigned; SmartScreen may warn on first launch.
 
 ### Run from source (development)
 
 ```bash
-git clone <repository-url>
-cd deadeye-studio
+git clone https://github.com/Deadeye3240/Deadeye-Studios.git
+cd Deadeye-Studios
 npm install
 npm run dev
 ```
@@ -85,7 +88,7 @@ npm start
 
 - Node.js 20+
 - npm 10+
-- Windows 10/11 (primary target)
+- Windows 10/11 or Linux (x64)
 
 ### Scripts
 
@@ -95,9 +98,11 @@ npm start
 | `npm run build` | Production build (renderer + main + preload) |
 | `npm run typecheck` | TypeScript validation |
 | `npm start` | Launch Electron against the last build |
-| `npm run dist` | Build + create NSIS installer and portable `.exe` |
-| `npm run dist:installer` | Build + NSIS installer only |
-| `npm run dist:portable` | Build + portable executable only |
+| `npm run dist` | Build + Windows NSIS installer and portable `.exe` |
+| `npm run dist:win` | Windows installer + portable only |
+| `npm run dist:linux` | Linux AppImage + `.deb` (best on Linux) |
+| `npm run dist:installer` | Windows NSIS installer only |
+| `npm run dist:portable` | Windows portable executable only |
 
 ### Project structure
 
