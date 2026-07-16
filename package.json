@@ -2,8 +2,12 @@
   "name": "deadeye-studio",
   "version": "1.0.0",
   "description": "Professional desktop code editor built with Electron and Monaco",
-  "author": "Deadeye Studio",
+  "author": {
+    "name": "Deadeye Studio",
+    "email": "dmarekcycles@gmail.com"
+  },
   "license": "MIT",
+  "homepage": "https://github.com/Deadeye3240/Deadeye-Studios",
   "main": "dist-electron/main.js",
   "type": "module",
   "private": true,
@@ -72,7 +76,8 @@
       ],
       "icon": "assets/icon.png",
       "category": "Development",
-      "maintainer": "Deadeye Studio",
+      "executableName": "deadeye-studio",
+      "maintainer": "Deadeye Studio <dmarekcycles@gmail.com>",
       "artifactName": "Deadeye-Studio-${version}-${arch}.${ext}",
       "synopsis": "Professional desktop code editor",
       "description": "Deadeye Studio is a modern developer environment built for speed, productivity, and customization."

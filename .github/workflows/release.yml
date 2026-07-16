@@ -16,6 +16,7 @@ permissions:
 
 env:
   CSC_IDENTITY_AUTO_DISCOVERY: 'false'
+  NODE_OPTIONS: --max-old-space-size=6144
 
 jobs:
   build-windows:
@@ -37,10 +38,11 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Build Windows installers
-        run: |
-          npm run build
-          npx electron-builder --win
+      - name: Build application
+        run: npm run build
+
+      - name: Package Windows installers
+        run: npx electron-builder --win --publish never
 
       - name: Upload Windows artifacts
         uses: actions/upload-artifact@v4
@@ -67,7 +69,9 @@ jobs:
       - name: Install Linux packaging dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y rpm fakeroot dpkg
+          sudo apt-get install -y rpm fakeroot dpkg \
+            libgtk-3-0 libnotify4 libnss3 libxss1 libxtst6 xdg-utils \
+            libatspi2.0-0 libdrm2 libgbm1 libasound2
 
       - name: Install dependencies
         run: npm ci
@@ -75,10 +79,11 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Build Linux packages
-        run: |
-          npm run build
-          npx electron-builder --linux
+      - name: Build application
+        run: npm run build
+
+      - name: Package Linux installers
+        run: npx electron-builder --linux --publish never
 
       - name: Upload Linux artifacts
         uses: actions/upload-artifact@v4
