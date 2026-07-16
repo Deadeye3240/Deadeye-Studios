@@ -20,7 +20,7 @@ The [Release workflow](.github/workflows/release.yml) builds and publishes:
 | Platform | Artifacts |
 |----------|-----------|
 | Windows | `Deadeye-Studio-{version}-Setup.exe`, `Deadeye-Studio-{version}-Portable.exe` |
-| Linux | `Deadeye-Studio-{version}-x64.AppImage`, `deadeye-studio_{version}_amd64.deb` |
+| Linux | `Deadeye-Studio-{version}-x86_64.AppImage`, `Deadeye-Studio-{version}-amd64.deb` |
 
 You can also trigger a release manually from **Actions → Release → Run workflow**.
 
