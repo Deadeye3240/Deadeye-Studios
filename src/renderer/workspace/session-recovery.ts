@@ -1,13 +1,28 @@
 import { getDialogService } from '../dialogs'
+import { getFilesystemClient } from '../filesystem'
 import type { WorkspaceManager } from './workspace-manager'
 import { isDiskFilePath } from './path-utils'
 import { getWorkspaceHistoryClient } from './workspace-history-client'
+
+async function isWorkspaceRootAvailable(workspaceRoot: string): Promise<boolean> {
+  try {
+    const metadata = await getFilesystemClient().getFileMetadata(workspaceRoot)
+    return metadata.isDirectory
+  } catch {
+    return false
+  }
+}
 
 export async function recoverLastSession(workspace: WorkspaceManager): Promise<boolean> {
   const state = await getWorkspaceHistoryClient().get()
   const session = state.lastSession
 
   if (!session?.workspaceRoot) {
+    return false
+  }
+
+  if (!(await isWorkspaceRootAvailable(session.workspaceRoot))) {
+    await getWorkspaceHistoryClient().clearSession()
     return false
   }
 

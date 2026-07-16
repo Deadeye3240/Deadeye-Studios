@@ -49,7 +49,7 @@ TypeScript and JavaScript include enhanced semantic highlighting via the Deadeye
 |----------------|----------|
 | ![Find in editor](docs/screenshots/search.png) | ![Settings](docs/screenshots/settings.png) |
 
-Screenshots captured from **Deadeye Studio v1.0.0** (production build).
+Screenshots captured from **Deadeye Studio v1.0.1** (production build).
 
 ## Installation
 
@@ -59,10 +59,10 @@ Get the latest release from [GitHub Releases](https://github.com/Deadeye3240/Dea
 
 | Platform | Artifact | Description |
 |----------|----------|-------------|
-| Windows | `Deadeye-Studio-1.0.0-Setup.exe` | NSIS installer with Start Menu and desktop shortcuts |
-| Windows | `Deadeye-Studio-1.0.0-Portable.exe` | Portable executable — no installation required |
-| Linux | `Deadeye-Studio-1.0.0-x86_64.AppImage` | AppImage — make executable and run (`chmod +x`) |
-| Linux | `Deadeye-Studio-1.0.0-amd64.deb` | Debian/Ubuntu package (`sudo dpkg -i …`) |
+| Windows | `Deadeye-Studio-1.0.1-Setup.exe` | NSIS installer with Start Menu and desktop shortcuts |
+| Windows | `Deadeye-Studio-1.0.1-Portable.exe` | Portable executable — no installation required |
+| Linux | `Deadeye-Studio-1.0.1-x86_64.AppImage` | AppImage — make executable and run (`chmod +x`) |
+| Linux | `Deadeye-Studio-1.0.1-amd64.deb` | Debian/Ubuntu package (`sudo dpkg -i …`) |
 
 Windows builds are unsigned; SmartScreen may warn on first launch.
 

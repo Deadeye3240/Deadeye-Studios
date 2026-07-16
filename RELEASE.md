@@ -1,6 +1,8 @@
 # Releasing Deadeye Studio
 
-## Version 1.0.0
+## Version 1.0.1
+
+See [CHANGELOG.md](CHANGELOG.md) and [release-notes/v1.0.1.md](release-notes/v1.0.1.md) for the v1.0.0 startup hang fix.
 
 Application version is defined in `package.json` and `src/shared/version.ts`.
 

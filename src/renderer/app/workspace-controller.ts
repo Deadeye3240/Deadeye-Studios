@@ -158,14 +158,6 @@ export class WorkspaceEditorController {
     const history = await getWorkspaceHistoryClient().get()
     await this.welcomeScreen.setRecentProjects(history.recentProjects)
 
-    await this.runStartupRecovery()
-
-    if (this.workspace.getOpenDocuments().length === 0) {
-      this.enterWelcomeMode()
-    }
-
-    this.applyInitialDocumentState()
-
     this.bindWorkspaceSyncEvents()
     this.registerCommands()
     this.bindCommandInfrastructure()
@@ -175,6 +167,21 @@ export class WorkspaceEditorController {
     this.languageManager.initialize(this.workspace.getWorkspaceRootSnapshot().path)
     await this.sourceControlPanel.bindWorkspaceRoot(this.workspace.getWorkspaceRootSnapshot().path)
     this.updateGitStatusLabel()
+  }
+
+  /** Runs after the loading screen is dismissed so session dialogs are visible. */
+  async finishStartup(): Promise<void> {
+    if (this.disposed) {
+      throw new Error('Cannot finish startup on a disposed WorkspaceEditorController')
+    }
+
+    await this.runStartupRecovery()
+
+    if (this.workspace.getOpenDocuments().length === 0) {
+      this.enterWelcomeMode()
+    }
+
+    this.applyInitialDocumentState()
   }
 
   getWorkspace(): WorkspaceManager {

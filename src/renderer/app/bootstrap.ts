@@ -121,11 +121,9 @@ export async function bootstrapApp(root: HTMLElement): Promise<ApplicationRuntim
 
     await controller.initialize()
 
-
-
     loadingScreen.hide()
 
-
+    await controller.finishStartup()
 
     const runtime: ApplicationRuntime = {
 
